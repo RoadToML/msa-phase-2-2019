@@ -1,0 +1,12 @@
+input[type=submit] {
+  margin-top: 3px;
+}
+
+input[type=text] {
+  border: 1px solid red;
+  border-radius: 4px;
+}
+
+.full {
+  padding-top: 100px;
+}

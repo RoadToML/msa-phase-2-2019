@@ -1,0 +1,35 @@
+<!doctype html>
+<title>Image Info</title>
+
+<head>
+<link type="text/css" rel="stylesheet"
+  href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<center>
+
+<div class="full">
+  <form id="search" method="POST">
+      <input type="text" name="text", placeholder="url to search" size="50"/>
+      <br>
+      <input type="submit" value="Search"/>
+  </form>
+
+
+    {% if url %}
+      <p> you want to identify <strong>{{ url }}</strong> this image</p>
+
+      <img src="{{ url }}" alt="user_image" height="250" width="400">
+
+      <h3>Prediction</h3>
+      <p> In this image we found a <strong>{{ prediction }}.</strong><p>
+
+    {% else %}
+      <p> please type a image url in the search box above.<br>
+        The image must be <strong> 32 x 32</strong> pixels.<br>
+        Must end with the common image extensions i.e. jpg, jpeg, png etc<p>
+    {% endif %}
+  </div>
+</div>
+
+</center>
