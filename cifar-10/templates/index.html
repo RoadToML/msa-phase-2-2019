@@ -24,6 +24,23 @@
       <h3>Prediction</h3>
       <p> In this image we found a <strong>{{ prediction }}.</strong><p>
 
+      <div class="activation">
+        <form id="activate" method="POST">
+          <input type="submit" name="activate" value="Activation"/>
+        </form>
+      </div>
+
+      {% if activation %}
+
+        <p> You maybe wondering, why did it classify this image wrong?<br>
+          well look at the below feature map to see how the model is 'viewing'<br>
+          your image. The dar areas is where the 'focus' is and could <br>
+          give some hints?</p>
+
+          {{ my_html }}
+
+      {% endif %}
+
     {% else %}
       <p> please type a image url in the search box above.<br>
         The image must be <strong> 32 x 32</strong> pixels.<br>
