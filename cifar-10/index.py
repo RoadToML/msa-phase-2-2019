@@ -7,10 +7,15 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def form_post():
-    url = request.form['text']
-    prediction = predict(url)
-    return render_template('index.html', url=url, prediction=prediction)
 
+    activate = request.form.get('activate')
+    url = request.form['text']
+    
+    return render_template('index.html',
+                            url=url,
+                            prediction=predict(url, visualise=False),
+                            my_html=predict(url, visualise=True)
+                            )
 @app.route('/')
 def landing_page():
     return render_template('index.html')
