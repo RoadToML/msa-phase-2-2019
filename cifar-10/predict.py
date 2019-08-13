@@ -37,30 +37,40 @@ def feature_map(img_array, model):
         for _ in range(1):
 
             fig, ax = plt.subplots()
+
+            ax.set_xticks([])
+            ax.set_yticks([])
+
             plt.imshow(feature_maps[0, :, :, 1], cmap='rainbow')
 
     encoded = fig_to_base64(fig)
-    my_html = '<img src="data:image/png;base64, {}">'.format(encoded.decode('utf-8'))
+    my_html = "data:image/png;base64,{}".format(encoded.decode('ascii'))
 
     return my_html
 
-def predict(url, visualise = False):
+def my_predict(url, visualise = False):
 
     model = load_model('model.h5')
 
     img_arr = open_image(url)
 
-    if not visualise:
+    if visualise:
+
+        return feature_map(img_arr, model)
+
+    elif not visualise:
         hist = model.predict(img_arr)
 
+        sorted_vals = np.argsort(hist)[0][-3:][::-1]
+
         # list object with classes
-        label_word = ['airplane','automobile','bird','cat','deer','dog','frog','horse','ship','truck']
+        all_labels = {0:'airplane', 1:'automobile', 2:'bird', 3:'cat', 4:'deer',
+                      5:'dog', 6:'frog', 7:'horse', 8:'ship', 9:'truck'}
 
-        return label_word[np.argmax(hist)]
+        classify_list = [[all_labels[i], str(hist[0][i]*100)[:5]+'%'] for i in sorted_vals]
 
-    elif visualise:
-        feature_map(img_arr, model)
+        return classify_list
 
 if __name__ == '__main__':
 
-    predict('https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg')
+    my_predict('https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg')
