@@ -13,6 +13,7 @@ def form_post():
 
     return render_template('index.html',
                             url=url,
+                            activate=activate,
                             prediction=my_predict(url, visualise=False),
                             my_html=my_predict(url, visualise=True)
                             )
@@ -22,4 +23,4 @@ def landing_page():
 
 if __name__ == '__main__':
 
-    app.run(host='0.0.0.0', port=6969, debug=True)
+    app.run(port=6969)

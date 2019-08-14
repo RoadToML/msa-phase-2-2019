@@ -21,31 +21,32 @@
 
       <img src="{{ url }}" alt="user_image" height="250" width="400">
 
-      <h3>Prediction</h3>
-      <p> In this image we found a
+      <h3>Classification</h3>
+      <p> In this image the Top 3 objects found were as follows:
         <strong>
         <ul>
           <li>{{ prediction[0][0] + ' : ' + prediction[0][1] }}</li>
           <li>{{ prediction[1][0] + ' : ' + prediction[1][1] }}</li>
           <li>{{ prediction[2][0] + ' : ' + prediction[2][1] }}</li>
         </ul>
-        </strong>.
+        </strong>
         <p>
+
+      <p> You maybe wondering, why did it classify this image wrong, or,<br>
+        why did it classify with such uncertainty? Click the Feature Map<br>
+        button below to find out more.</p>
 
       <div class="activation">
         <form id="activate" method="POST">
           <input type="hidden" name="text" value="{{url}}">
-          <input type="submit" name="activate" value="Activation"/>
+          <input type="submit" name="activate" value="Feature Map"/>
         </form>
       </div>
 
-      <img src="{{ my_html }}" alt="feature map" height="250" width="400">
-
       {% if activate %}
 
-        <p> You maybe wondering, why did it classify this image wrong?<br>
-          well look at the below feature map to see how the model is 'viewing'<br>
-          your image. The dar areas is where the 'focus' is and could <br>
+        <p> Look at the below feature map to see how the model is 'viewing'<br>
+          your image. The dark areas is where the 'focus' is and could <br>
           give some hints?</p>
 
           <img src="{{ my_html }}" alt="feature map" height="250" width="400">
