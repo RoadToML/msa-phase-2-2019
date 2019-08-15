@@ -1,2 +1,6 @@
 cifar-10/__pycache__/
 *.pickle
+*.json
+*.h5
+transfer_learning/asl_alphabet_train/
+transfer_learning/.ipynb_checkpoints/
