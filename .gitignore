@@ -4,3 +4,4 @@ cifar-10/__pycache__/
 *.h5
 transfer_learning/asl_alphabet_train/
 transfer_learning/.ipynb_checkpoints/
+notebooks/asl_alphabet_train/
