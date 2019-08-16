@@ -1,0 +1,30 @@
+1: Log into the azure portal
+
+2: Navigate to Virtual Machines and click 'New'
+
+3: Select a appropriate name and the hardware specifications
+	Best for a server (of our size) is atleast 2 cores and atleast 2GB RAM. (I used 4GB ram).
+	a GPU can be used aswell but for a simple frontend for predicting, GPU wont make much difference.
+
+4: Select the appropriate OS image, I used windows 10 v1809, as my code was written on windows and did not want inconsistencies.
+
+5: Under Inbound port rules select 'Allow selected ports' and check RDP and SSH
+
+6: Click 'Disks' from the above toolbar and select the type of HDD/SSD required.
+	I chose standard SSD as HDD wouldve been too slow and premium SSD isnt required as we dont have much I/O.
+
+7: Click 'Review + Create' and once statisfied, 'Confirm' to create. 
+
+8: Once created, select your VM and under 'settings' click 'Networking'.
+
+9: Click 'Add inbound port rule' and change the port to 5000 and change name appropriately (optional).
+
+10: Once the VM is running, Click 'Configure' beside DNS name and add a DNS.
+
+11: Click connect and select RDP and log into your VM. 
+
+12: Install Miniconda and Git. 
+
+13: Git clone the repo and install requirements into a conda environment
+
+14: Run the server and access the server using your VMs Public IP with the 5000 port.  
